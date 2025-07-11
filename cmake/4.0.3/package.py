@@ -31,5 +31,3 @@ rm -rf ./{installer}
 
 def commands():
     env.PATH.append("{root}/bin")
-    env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_PREFIX_PATH.append("{root}")

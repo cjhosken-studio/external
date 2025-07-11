@@ -16,11 +16,13 @@ ExternalProject_Add(
         -DCMAKE_BUILD_TYPE=Release
         -DBUILD_SHARED_LIBS=ON
 
-        -DUSE_PYTHON=OFF
-        -DUSE_QT=OFF
+        -DUSE_PYTHON=ON
+        -DUSE_QT=ON
         -DUSE_OPENGL=ON
 
-        -DPTEX_DIR=$ENV{Ptex_ROOT}
+        -DPtex_DIR=$ENV{Ptex_ROOT}
+        -DPtex_ROOT=$ENV{Ptex_ROOT}
+        -DOpenColorIO_ROOT=$ENV{OpenColorIO_ROOT}
 
         -DOIIO_BUILD_TOOLS=ON
         -DENABLE_toolname=ON

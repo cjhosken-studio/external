@@ -15,7 +15,7 @@ description = \
     """
 
 tools = [
-
+    "python"
 ]
 
 requires = [
@@ -24,11 +24,7 @@ requires = [
 
 def commands():
     env.PATH.prepend("{root}/bin")
-    env.PYTHONPATH.prepend("{root}/lib/python3.13")
     env.LD_LIBRARY_PATH.append("{root}/lib")
-
-    env.PYTHONHOME.set("{root}")
-    env.SSL_CERT_FILE.set("{root}/lib/python3.13/site-packages/pip/_vendor/certifi/cacert.pem")
 
     env.Python_ROOT.set("{root}")
     env.Python_EXECUTABLE.set("{root}/bin/python3")

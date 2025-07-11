@@ -18,12 +18,15 @@ tools = [
 ]
 
 requires = [
-    "cmake-4.0.3"
+    "cmake-4.0.3",
+    "onetbb-2022.2.0",
+    "ptex-2.4.3"
 ]
 
 def commands():
     env.CMAKE_MODULE_PATH.append("{root}/lib64/cmake")
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.OpenSubdiv_ROOT.append("{root}")
-    env.OpenSubdiv_INCLUDE_DIR.append("{root}/include")
-    env.OpenSubdiv_LIBRARY_DIR.append("{root}/lib")
+
+    env.OpenSubdiv_ROOT.set("{root}")
+    env.OpenSubdiv_INCLUDE_DIR.set("{root}/include")
+    env.OpenSubdiv_LIBRARY_DIR.set("{root}/lib")

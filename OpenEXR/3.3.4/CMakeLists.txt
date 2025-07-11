@@ -16,8 +16,9 @@ ExternalProject_Add(
         -DBUILD_SHARED_LIBS=ON
 
         -DOPENEXR_CXX_STANDARD=17
+
+        -DOPENEXR_USE_TBB=ON
         
-        -DOPENEXR_USE_TBB=OFF
         -DBUILD_TESTING=OFF
         -DOPENEXR_BUILD_TOOLS=ON
         -DOPENEXR_INSTALL_TOOLS=ON

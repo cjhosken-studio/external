@@ -17,6 +17,7 @@ tools = [
 
 requires = [
     "cmake-4.0.3",
+    "onetbb-2022.2.0"
 ]
 
 def commands():
@@ -24,5 +25,7 @@ def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib64")
     env.CMAKE_MODULE_PATH.append("{root}/lib64/cmake")
 
-    env.OpenEXR_ROOT.append("{root}")
+    env.OpenEXR_ROOT.set("{root}")
+    env.OpenEXR_INCLUDE_DIR.set("{root}/include")
+    env.OpenEXR_LIBRARY_DIR.set("{root}/lib64")
     

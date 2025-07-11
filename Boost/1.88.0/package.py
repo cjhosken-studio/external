@@ -26,4 +26,6 @@ requires = [
 def commands():
     env.CMAKE_MODULE_PATH.append("{root}/lib64/cmake")
     env.LD_LIBRARY_PATH.append("{root}/lib64")
-    env.BOOST_ROOT.append("{root}")
+
+    env.BOOST_ROOT.set("{root}")
+    env.Boost_ROOT.set("{root}")

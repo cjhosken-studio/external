@@ -22,12 +22,14 @@ tools = [
 requires = [
     "cmake-4.0.3",
     "openexr-3.3.4",
-    "openimageio-2.4.17.0",
+    "python-3.13.5"
 ]
 
 def commands():
     env.PATH.append("{root}/bin")
-    env.PYTHONPATH.append("{root}/python")
-    env.LD_LIBRARY_PATH.append("{root}/lib")
+    env.LD_LIBRARY_PATH.append("{root}/lib64")
+    env.CMAKE_MODULE_PATH.append("{root}/lib64/cmake")
 
-    env.OpenColorIO_ROOT.append("{root}")
+    env.OpenColorIO_ROOT.set("{root}")
+    env.OpenColorIO_INCLUDE_DIR.set("{root}/include")
+    env.OpenColorIO_LIBRARY_DIR.set("{root}/lib64")

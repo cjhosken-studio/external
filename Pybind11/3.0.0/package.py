@@ -1,6 +1,6 @@
-name = "openvdb"
+name = "pybind11"
 
-version = "12.0.1"
+version = "3.0.0"
 
 authors = [
     "Academy Software Foundation"
@@ -18,14 +18,11 @@ tools = [
 
 requires = [
     "cmake-4.0.3",
+    "python-3.13.5",
 ]
 
 def commands():
-    env.PATH.append("{root}/bin")
-    
     env.CMAKE_MODULE_PATH.append("{root}/lib64/cmake")
     env.LD_LIBRARY_PATH.append("{root}/lib64")
 
-    env.OpenVDB_ROOT.set("{root}")
-    env.OpenVDB_INCLUDE_DIR.set("{root}/include")
-    env.OPENVDB_LIBRARY_DIR.set("{root}/lib64")
+    env.pybind11_ROOT.set("{root}")

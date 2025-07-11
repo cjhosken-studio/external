@@ -16,13 +16,17 @@ ExternalProject_Add(
         -DCMAKE_CXX_STANDARD=17
         -DCMAKE_BUILD_TYPE=Release
 
-        -DNO_PTEX=ON
-        -DNO_TBB=ON
+        -DNO_PTEX=OFF
+        -DPTEX_LOCATION=$ENV{Ptex_ROOT}
+        -DPTEX_INCLUDE_DIR=$ENV{Ptex_INCLUDE_DIR}
+        -DPTEX_LIBRARY=$ENV{Ptex_LIBRARY_DIR}
+
+        -DNO_TBB=OFF
         -DNO_OMP=ON
 
-        -DNO_CUDA=OFF
-        -DNO_OPENCL=OFF
-        -DNO_CLEW=OFF
+        -DNO_CUDA=ON
+        -DNO_OPENCL=ON
+        -DNO_CLEW=ON
         -DNO_OPENGL=OFF
         -DNO_METAL=OFF
     

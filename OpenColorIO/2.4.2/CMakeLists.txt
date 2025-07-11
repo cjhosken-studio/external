@@ -16,12 +16,14 @@ ExternalProject_Add(
         -DCMAKE_BUILD_TYPE=Release
         -DBUILD_SHARED_LIBS=ON
         
-        -DOpenImageIO_ROOT=$ENV{OpenImageIO_ROOT}
 
-        -DOCIO_INSTALL_EXT_PACKAGES=NONE
+
+        -DPython_EXECUTABLE=$ENV{Python_EXECUTABLE}
+
+        -DOCIO_INSTALL_EXT_PACKAGES=MISSING
 
         -DOCIO_BUILD_APPS=ON
-        -DOCIO_USE_OIIO_FOR_APPS=ON # More file formats than with OpenEXR
+        -DOCIO_USE_OIIO_FOR_APPS=OFF # More file formats than with OpenEXR, but we'd rather have OCIO with OIIO than OIIO with OCIO
         -DOCIO_BUILD_PYTHON=ON
 
         -DOCIO_BUILD_TESTS=OFF
