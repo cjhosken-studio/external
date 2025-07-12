@@ -14,19 +14,12 @@ description = \
 
 
 tools = [
-
+    
 ]
 
-requires = [
-    "cmake-3.31.7+",
-    "gcc-11.2.0+"
-    "opensubdiv-3.6+",
-    "opencolorio-2.4+",
-    "openimageio-2.4+",
-    "materialx-1.39+",
-    "ptex-2.4+",
-    "python-3.11+",
-    'onetbb-2021+'
+variants = [
+    ["vfxplatform-2025"],
+    ["vfxplatform-2026"]
 ]
 
 def commands():

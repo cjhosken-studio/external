@@ -1,6 +1,6 @@
 name = "python"
 
-version = "3.11.11"
+version = "3.13.5"
 
 authors = [
     "Python"
@@ -19,7 +19,7 @@ tools = [
 ]
 
 requires = [
-    "glibc-2.28+",
+    "vfxplatform-2026",
 ]
 
 def commands():

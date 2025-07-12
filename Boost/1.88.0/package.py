@@ -16,12 +16,11 @@ tools = [
 ]
 
 variants = [
-    ["python-3.13+"]
+    ["vfxplatform-2026"]
 ]
 
 requires = [
-    "cmake-3.31.7+",
-    "gcc-14.2+"
+
 ]
 
 def commands():

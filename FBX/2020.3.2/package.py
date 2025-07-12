@@ -17,8 +17,13 @@ tools = [
 
 ]
 
+variants = [
+    ["vfxplatform-2025"],
+    ["vfxplatform-2026"],
+]
+
 requires = [
-    "cmake-3.31.7+",
+
 ]
 
 build_command = """

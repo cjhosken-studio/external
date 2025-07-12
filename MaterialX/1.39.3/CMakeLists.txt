@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0.3)
+cmake_minimum_required(VERSION 3.31.7)
 
 include(RezBuild)
 include(ExternalProject)
@@ -13,7 +13,7 @@ ExternalProject_Add(
     CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
         -DCMAKE_BUILD_TYPE=Release
-        -DCMAKE_CXX_STANDARD=17
+        -DCMAKE_CXX_STANDARD=$ENV{VFX_CXX_STANDARD}
         -DBUILD_SHARED_LIBS=ON
 
         -DMATERIALX_BUILD_PYTHON=ON

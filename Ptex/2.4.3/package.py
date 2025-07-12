@@ -18,9 +18,9 @@ tools = [
 
 ]
 
-requires = [
-    "cmake-3.31.7+",
-    "gcc-11.2.0+"
+variants = [
+    ["vfxplatform-2025"],
+    ["vfxplatform-2026"]
 ]
 
 def commands():

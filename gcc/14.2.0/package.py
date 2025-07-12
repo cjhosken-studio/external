@@ -1,6 +1,6 @@
 name = "gcc"
 
-version = "11.2.0"
+version = "14.2.0"
 
 authors = [
     "GNU"
@@ -24,8 +24,12 @@ tools = [
     "gcov"
 ]
 
+variants = [
+    ["vfxbase-2026"],
+]
+
 requires = [
-    "cmake-3.31.7+",
+    "cmake-3.31.7+"
 ]
 
 def commands():

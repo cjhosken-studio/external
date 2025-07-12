@@ -17,12 +17,13 @@ tools = [
 
 ]
 
+variants = [
+    ["vfxplatform-2025"],
+    ["vfxplatform-2026"]
+]
+
 requires = [
-    "cmake-4.0.3",
-    "boost-1.88.0",
-    "python-3.13.5",
-    "hdf5-1.14.6",
-    "imath-3.1.12"
+
 ]
 
 def commands():

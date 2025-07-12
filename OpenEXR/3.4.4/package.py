@@ -15,9 +15,11 @@ tools = [
 
 ]
 
+variants = [
+    ["vfxplatform-2026"],
+]
+
 requires = [
-    "glibc-2.28+",
-    "onetbb-2021+"
 ]
 
 def commands():

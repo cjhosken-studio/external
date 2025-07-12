@@ -24,8 +24,12 @@ tools = [
     "gcov"
 ]
 
+variants = [
+    ["vfxbase-2025"],
+]
+
 requires = [
-    "cmake-3.31.7+",
+    "cmake-3.31.7+"
 ]
 
 def commands():

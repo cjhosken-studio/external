@@ -5,6 +5,9 @@ include(ExternalProject)
 # Versions
 get_filename_component(VERSION ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 
+set(CPP_STANDARD $ENV{VFX_CXX_STANDARD})  # or "14", "20", etc.
+set(CPP_STANDARD_FLAGS "-std=c++${CPP_STANDARD}")
+
 set(GMP_VERSION 6.2.0)
 set(MPFR_VERSION 4.1.0)
 set(MPC_VERSION 1.2.1)

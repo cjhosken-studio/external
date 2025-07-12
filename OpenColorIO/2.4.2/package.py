@@ -19,9 +19,9 @@ tools = [
 
 ]
 
-requires = [
-    "openexr-3.3.4",
-    "python-3.11.5"
+variants = [
+    ["vfxplatform-2025"],
+    ["vfxplatform-2026"],
 ]
 
 def commands():

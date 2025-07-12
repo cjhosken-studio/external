@@ -1,6 +1,6 @@
 name = "qt"
 
-version = "6.8.3"
+version = "6.8.1"
 
 authors = [
     "Qt Group"
@@ -16,7 +16,7 @@ tools = [
 ]
 
 requires = [
-    "gcc-11.2+"
+    "vfxplatform-2026"
 ]
 
 def commands():

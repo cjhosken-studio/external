@@ -15,7 +15,7 @@ ExternalProject_Add(
         -DCMAKE_BUILD_TYPE=Release
         -DBUILD_SHARED_LIBS=ON
 
-        -DOPENEXR_CXX_STANDARD=17
+        -DOPENEXR_CXX_STANDARD=$ENV{VFX_CXX_STANDARD}
 
         -DOPENEXR_USE_TBB=ON
         

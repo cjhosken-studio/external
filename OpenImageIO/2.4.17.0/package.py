@@ -15,11 +15,13 @@ tools = [
 
 ]
 
+variants = [
+    ["vfxplatform-2025"],
+    ["vfxplatform-2026"],
+]
+
 requires = [
-    "openexr-3.3+",
-    "python-3.11+",
-    "opencolorio-2.4+",
-    "ptex-2.4+"
+
 ]
 
 def commands():

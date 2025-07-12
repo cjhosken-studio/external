@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0.3)
+cmake_minimum_required(VERSION 3.31.7)
 
 include(RezBuild)
 include(ExternalProject)
@@ -22,9 +22,15 @@ ExternalProject_Add(
 )
 
 # Add post-install step for Python packages
+ExternalProject_Add_Step(Python upgrade_pip
+    COMMAND <INSTALL_DIR>/bin/pip3 install --upgrade pip
+    DEPENDEES install
+    COMMENT "Upgrading pip..."
+)
+
 ExternalProject_Add_Step(Python install_packages
     COMMAND <INSTALL_DIR>/bin/pip3 install PySide6==6.5.3 PyQt6==6.5.3 PyOpenGL==3.1.9 numpy==1.26.4
-    DEPENDEES install
+    DEPENDEES upgrade_pip
     COMMENT "Installing Python packages..."
 )
 

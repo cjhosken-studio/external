@@ -21,9 +21,12 @@ tools = [
     
 ]
 
-requires = [
-    "glibc-2.28+"
+variants = [
+    ["vfxbase-2025"],
+    ["vfxbase-2026"],
 ]
+
+requires = []
 
 build_command = """
 chmod +x {root}/intel-oneapi-base-toolkit-2025.2.0.592.sh

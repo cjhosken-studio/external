@@ -19,7 +19,7 @@ tools = [
 ]
 
 requires = [
-    "glibc-2.28+",
+    "vfxplatform-2025",
 ]
 
 def commands():

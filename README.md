@@ -20,3 +20,11 @@ sort out DNF installs
 
 Windows?
 Mac??
+
+
+
+
+
+
+
+GCC needs C++ version setup

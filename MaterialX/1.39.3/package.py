@@ -15,8 +15,13 @@ tools = [
 
 ]
 
+variants = [
+    ["vfxbase-2025"],
+    ["vfxbase-2026"],
+]
+
 requires = [
-    "python-3.11.11+",
+    "cmake-3.31.7+",
 ]
 
 def commands():
