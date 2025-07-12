@@ -19,7 +19,8 @@ tools = [
 ]
 
 requires = [
-    "cmake-4.0.3",
+    "cmake-3.31.7+",
+    "gcc-11.2.0+"
 ]
 
 def commands():

@@ -20,9 +20,8 @@ tools = [
 ]
 
 requires = [
-    "cmake-4.0.3",
     "openexr-3.3.4",
-    "python-3.13.5"
+    "python-3.11.5"
 ]
 
 def commands():

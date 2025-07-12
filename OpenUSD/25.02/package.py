@@ -1,6 +1,6 @@
 name = "usd"
 
-version = "25.05"
+version = "25.02"
 
 authors = [
     "Pixar Animation Studios"
@@ -18,14 +18,15 @@ tools = [
 ]
 
 requires = [
-    "cmake-4.0.3",
-    "opensubdiv-3.6.1",
-    "opencolorio-2.4.2",
-    "openimageio-2.4.17.0",
-    "materialx-1.39.3",
-    "ptex-2.4.3",
-    "python-3.13.5",
-    'onetbb-2022.2.0'
+    "cmake-3.31.7+",
+    "gcc-11.2.0+"
+    "opensubdiv-3.6+",
+    "opencolorio-2.4+",
+    "openimageio-2.4+",
+    "materialx-1.39+",
+    "ptex-2.4+",
+    "python-3.11+",
+    'onetbb-2021+'
 ]
 
 def commands():

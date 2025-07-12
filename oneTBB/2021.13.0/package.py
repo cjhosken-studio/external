@@ -1,6 +1,6 @@
 name = "onetbb"
 
-version = "2022.2.0"
+version = "2021.13.0"
 
 authors = [
     "UXL Foundation"
@@ -16,7 +16,7 @@ tools = [
 ]
 
 requires = [
-    "cmake-4.0.3"
+    "glibc-2.28+",
 ]
 
 def commands():

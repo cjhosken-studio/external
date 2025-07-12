@@ -16,8 +16,7 @@ tools = [
 ]
 
 requires = [
-    "cmake-4.0.3",
-    "python-3.13.5",
+    "python-3.11.11+",
 ]
 
 def commands():

@@ -16,8 +16,8 @@ tools = [
 ]
 
 requires = [
-    "cmake-4.0.3",
-    "onetbb-2022.2.0"
+    "glibc-2.28+",
+    "onetbb-2021+"
 ]
 
 def commands():

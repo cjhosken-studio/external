@@ -18,9 +18,10 @@ tools = [
 ]
 
 requires = [
-    "cmake-4.0.3",
-    "onetbb-2022.2.0",
-    "ptex-2.4.3"
+    "cmake-3.31.7+",
+    "gcc-11.2.0+",
+    "onetbb-2021+",
+    "ptex-2.4+"
 ]
 
 def commands():

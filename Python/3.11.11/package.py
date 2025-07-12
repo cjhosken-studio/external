@@ -1,6 +1,6 @@
 name = "python"
 
-version = "3.13.5"
+version = "3.11.11"
 
 authors = [
     "Python"
@@ -19,7 +19,7 @@ tools = [
 ]
 
 requires = [
-    "cmake-4.0.3",
+    "glibc-2.28+",
 ]
 
 def commands():

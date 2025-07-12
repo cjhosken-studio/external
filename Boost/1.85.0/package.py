@@ -1,6 +1,6 @@
 name = "boost"
 
-version = "1.88.0"
+version = "1.85.0"
 
 authors = [
     "Boost"
@@ -16,11 +16,12 @@ tools = [
 ]
 
 variants = [
-    ["python-3.13.5"]
+    ["python-3.11+"]
 ]
 
 requires = [
-    "cmake-4.0.3",
+    "cmake-3.31.7+",
+    "gcc-11.2.0+"
 ]
 
 def commands():

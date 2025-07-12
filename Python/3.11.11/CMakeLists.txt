@@ -23,7 +23,7 @@ ExternalProject_Add(
 
 # Add post-install step for Python packages
 ExternalProject_Add_Step(Python install_packages
-    COMMAND <INSTALL_DIR>/bin/pip3 install PySide6==6.8.1 PyQt6==6.8.1 PyOpenGL==3.1.9 numpy==1.26.4 pybind11==3.0.0 pytest==8.4.1 ninja2==0.1
+    COMMAND <INSTALL_DIR>/bin/pip3 install PySide6==6.5.3 PyQt6==6.5.3 PyOpenGL==3.1.9 numpy==1.26.4
     DEPENDEES install
     COMMENT "Installing Python packages..."
 )

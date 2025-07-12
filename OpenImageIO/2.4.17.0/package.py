@@ -16,12 +16,10 @@ tools = [
 ]
 
 requires = [
-    "cmake-4.0.3",
-    "openexr-3.3.4",
-    "python-3.13.5",
-    "opencolorio-2.4.2",
-    "ptex-2.4.3",
-    "pybind11-3.0.0"
+    "openexr-3.3+",
+    "python-3.11+",
+    "opencolorio-2.4+",
+    "ptex-2.4+"
 ]
 
 def commands():
