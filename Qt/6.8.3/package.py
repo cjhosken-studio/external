@@ -1,6 +1,6 @@
 name = "qt"
 
-version = "6.5.3"
+version = "6.8.3"
 
 authors = [
     "Qt Group"
@@ -16,9 +16,9 @@ tools = [
 ]
 
 requires = [
-    "glibc-2.28.7+",
+    "gcc-11.2+"
 ]
 
 def commands():
     env.PATH.prepend("{root}/bin")
-    env.LD_LIBRARY_PATH.append("{root}/lib")
+    env.LD_LIBRARY_PATH.set("{root}/lib")

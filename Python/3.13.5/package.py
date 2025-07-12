@@ -28,3 +28,5 @@ def commands():
 
     env.Python_ROOT.set("{root}")
     env.Python_EXECUTABLE.set("{root}/bin/python3")
+
+    alias("python", "{root}/bin/python3")
