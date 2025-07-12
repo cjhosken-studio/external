@@ -22,17 +22,16 @@ requires = [
     "gcc-11.2.0+",
     "glibc-2.28",
     "python-3.11+",
-    #"qt-6.5+",
+    "qt-6.5+",
     "openexr-3.3+",
     "ptex-2.4+",
     "opensubdiv-3.6+",
     "openvdb-12+"
     "alembic-1.8+",
-    #"fbx-2020+"
+    "fbx-2020.3+"
     "opencolorio-2.4+",
     "boost-1.85+",
-    "opentbb-2021+",
-    #"onemkl-2024"
+    "openapi-2025+" # move to oneAPI as it includes oneTBB and oneMKL
 ]
 
 def commands():

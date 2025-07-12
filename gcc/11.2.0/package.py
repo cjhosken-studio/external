@@ -33,6 +33,6 @@ def commands():
     env.CC.set("{root}/bin/gcc")
     env.CXX.set("{root}/bin/g++")
     env.LD_LIBRARY_PATH.prepend("{root}/lib")
+    env.LD_LIBRARY_PATH.prepend("{root}/lib64")
 
-    env.CMAKE_MODULE_PATH.append("{root}/cmake")
     env.GCC_ROOT.set("{root}")
