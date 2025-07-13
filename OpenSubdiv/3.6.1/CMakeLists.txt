@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0.3)
+cmake_minimum_required(VERSION 3.31.7)
 
 include(RezBuild)
 include(ExternalProject)
@@ -24,7 +24,7 @@ ExternalProject_Add(
         -DNO_TBB=OFF
         -DNO_OMP=ON
 
-        -DNO_CUDA=ON
+        -DNO_CUDA=OFF
         -DNO_OPENCL=ON
         -DNO_CLEW=ON
         -DNO_OPENGL=OFF
@@ -39,6 +39,6 @@ ExternalProject_Add(
 install(
     CODE
     "execute_process(
-        COMMAND echo \"\n[REZ] OpenSubdiv-${REZ_BUILD_PROJECT_VERSION} Install finished!\n\"
+        COMMAND echo \"\n[REZ] OpenSubdiv-${VERSION} Install finished!\n\"
     )"
 )

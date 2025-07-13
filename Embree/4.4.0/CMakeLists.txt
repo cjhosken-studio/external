@@ -6,24 +6,21 @@ include(ExternalProject)
 get_filename_component(VERSION ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 
 ExternalProject_Add(
-    Alembic
-    URL https://github.com/alembic/alembic/archive/refs/tags/${VERSION}.tar.gz
-    PREFIX alembic
+    Embree
+    URL https://github.com/RenderKit/embree/archive/refs/tags/v${VERSION}.tar.gz
+    PREFIX embree
     INSTALL_DIR $ENV{REZ_BUILD_INSTALL_PATH}
     CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
-        -DCMAKE_CXX_STANDARD=$ENV{VFX_CXX_STANDARD}
         -DCMAKE_BUILD_TYPE=Release
-        -DALEMBIC_SHARED_LIBS=ON
+        -DCMAKE_CXX_STANDARD=$ENV{VFX_CXX_STANDARD}
+        -DBUILD_SHARED_LIBS=ON
 
-        -DUSE_PYALEMBIC=ON
-
-        -DImath_ROOT=$ENV{Imath_ROOT}
 )
 
 install(
     CODE
     "execute_process(
-        COMMAND echo \"\n[REZ] Alembic-${VERSION} Install finished!\n\"
+        COMMAND echo \"\n[REZ] Embree-${VERSION} Install finished!\n\"
     )"
 )

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0.3)
+cmake_minimum_required(VERSION 3.31.7)
 
 include(RezBuild)
 include(ExternalProject)
@@ -12,7 +12,7 @@ ExternalProject_Add(
     INSTALL_DIR $ENV{REZ_BUILD_INSTALL_PATH}
     CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
-        -DCMAKE_CXX_STANDARD=$ENV{VFX_CXX_STANDARD}
+        -DCMAKE_CXX_STANDARD=17
         -DCMAKE_BUILD_TYPE=Release
         -DBUILD_SHARED_LIBS=OFF
 
@@ -27,12 +27,11 @@ ExternalProject_Add(
         -DOPENVDB_BUILD_AX_BINARIES=OFF
 
         -DOPENVDB_BUILD_NANOVDB=OFF
-        -DNANOVDB_BUILD_TOOLS=OFF
 )
 
 install(
     CODE
     "execute_process(
-        COMMAND echo \"\n[REZ] OpenVDB-${REZ_BUILD_PROJECT_VERSION} Install finished!\n\"
+        COMMAND echo \"\n[REZ] OpenVDB-${VERSION} Install finished!\n\"
     )"
 )

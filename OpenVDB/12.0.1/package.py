@@ -13,11 +13,11 @@ description = \
     """
 
 tools = [
-
+    "vdb_print"
 ]
 
 variants = [
-    ["vfxplatform-2025"]
+    ["vfxbase-2026", "gcc-14.2", "python-3.13", "boost-1.88"]
 ]
 
 requires = [

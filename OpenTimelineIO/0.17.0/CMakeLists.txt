@@ -5,24 +5,28 @@ include(ExternalProject)
 
 get_filename_component(VERSION ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 
-string(REGEX REPLACE "^([0-9]+\\.[0-9]+).*" "\\1" VERSION_MAJOR_MINOR ${VERSION})
-
 ExternalProject_Add(
-    Qt
-    URL https://download.qt.io/official_releases/qt/${VERSION_MAJOR_MINOR}/${VERSION}/single/qt-everywhere-src-${VERSION}.tar.xz
-    PREFIX qt
+    OpenTimelineIO
+    URL https://github.com/AcademySoftwareFoundation/OpenTimelineIO/archive/refs/tags/v${VERSION}.tar.gz
+    PREFIX opentimelineio
     INSTALL_DIR $ENV{REZ_BUILD_INSTALL_PATH}
-    CONFIGURE_COMMAND python3 -m pip install PySide6==6.8.1 PyQt6==6.8.1
     CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
         -DCMAKE_BUILD_TYPE=Release
         -DCMAKE_CXX_STANDARD=$ENV{VFX_CXX_STANDARD}
-        -DBUILD_SHARED_LIBS=ON
+        -DOTIO_SHARED_LIBS=ON
+
+        -DOTIO_IMATH_LIBS=$ENV{Imath_LIBRARY_DIR}
+        -DOTIO_FIND_IMATH=OFF
+
+        -DOTIO_PYTHON_INSTALL=OFF
+
+
 )
 
 install(
     CODE
     "execute_process(
-        COMMAND echo \"\n[REZ] Qt-${VERSION} Install finished!\n\"
+        COMMAND echo \"\n[REZ] OpenTimelineIO-${VERSION} Install finished!\n\"
     )"
 )

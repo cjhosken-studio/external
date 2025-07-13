@@ -104,6 +104,6 @@ ExternalProject_Add(gcc
 install(
     CODE
     "execute_process(
-        COMMAND echo \"\n[REZ] gcc-${REZ_BUILD_PROJECT_VERSION} Install finished!\n\"
+        COMMAND echo \"\n[REZ] gcc-${VERSION} Install finished!\n\"
     )"
 )

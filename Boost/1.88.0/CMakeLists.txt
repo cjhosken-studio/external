@@ -24,6 +24,6 @@ ExternalProject_Add(
 install(
     CODE
     "execute_process(
-        COMMAND echo \"\n[REZ] Boost-${REZ_BUILD_PROJECT_VERSION} Install finished!\n\"
+        COMMAND echo \"\n[REZ] Boost-${VERSION} Install finished!\n\"
     )"
 )

@@ -15,13 +15,14 @@ description = \
     """
 
 tools = [
-
+    "ptxinfo"
 ]
 
 variants = [
-    ["vfxplatform-2025"],
-    ["vfxplatform-2026"]
+    ["vfxbase-2026", "gcc-14.2"],
+    #["vfxplatform-2026"]
 ]
+
 
 def commands():
     env.PATH.append("{root}/bin")

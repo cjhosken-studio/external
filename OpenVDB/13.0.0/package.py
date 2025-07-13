@@ -1,6 +1,6 @@
 name = "openvdb"
 
-version = "12.0.1"
+version = "13.0.0"
 
 authors = [
     "Academy Software Foundation"
@@ -13,11 +13,11 @@ description = \
     """
 
 tools = [
-
+    "vdb_print"
 ]
 
 variants = [
-    ["vfxplatform-2026"]
+    ["vfxbase-2026", "gcc-14.2", "python-3.13", "boost-1.88"]
 ]
 
 requires = [

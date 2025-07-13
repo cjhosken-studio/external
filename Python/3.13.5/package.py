@@ -15,11 +15,27 @@ description = \
     """
 
 tools = [
-    "python"
+    "f2py",
+    "idle3",
+    "idle3.13",
+    "pip3",
+    "pip3.13",
+    "pydoc3",
+    "pydoc3.13",
+    "python3",
+    "python3.13",
+    "python3.13-config",
+    "python3.13d",
+    "python3.13d-config",
+    "python3-config",
 ]
 
+variants = [
+    ["vfxbase-2026", "gcc-14.2"]
+]
+
+
 requires = [
-    "vfxplatform-2026",
 ]
 
 def commands():

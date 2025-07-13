@@ -29,7 +29,7 @@ ExternalProject_Add_Step(Python upgrade_pip
 )
 
 ExternalProject_Add_Step(Python install_packages
-    COMMAND <INSTALL_DIR>/bin/pip3 install PySide6==6.8.1 PyQt6==6.8.1 PyOpenGL==3.1.9 numpy==1.26.4
+    COMMAND <INSTALL_DIR>/bin/pip3 install numpy==1.26.4
     DEPENDEES upgrade_pip
     COMMENT "Installing Python packages..."
 )
@@ -37,6 +37,6 @@ ExternalProject_Add_Step(Python install_packages
 install(
     CODE
     "execute_process(
-        COMMAND echo \"\n[REZ] Python-${REZ_BUILD_PROJECT_VERSION} Install finished!\n\"
+        COMMAND echo \"\n[REZ] Python-${VERSION} Install finished!\n\"
     )"
 )

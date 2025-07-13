@@ -18,8 +18,7 @@ tools = [
 ]
 
 variants = [
-    ["vfxplatform-2025"],
-    ["vfxplatform-2026"]
+    ["vfxbase-2026", "gcc-14.2", "python-3.13", "boost-1.88"],
 ]
 
 requires = [

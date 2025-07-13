@@ -12,13 +12,70 @@ description = \
     """
 
 tools = [
+    "androiddeployqt",
+    "androiddeployqt6",
+    "androidtestrunner",
+    "assistant",
+    "balsam",
+    "balsamui",
+    "canbusutil",
+    "cooker",
+    "designer",
+    "instancer",
+    "lconvert",
+    "linguist",
+    "lrelease",
+    "lupdate",
+    "materialeditor",
+    "meshdebug",
+    "pixeltool",
+    "qdbus",
+    "qdbuscpp2xml",
+    "qdbusviewer",
+    "qdbusxml2cpp",
+    "qdistancefieldgenerator",
+    "qmake",
+    "qmake6",
+    "qml",
+    "qmldom",
+    "qmleasing",
+    "qmlformat",
+    "qmllint",
+    "qmlls",
+    "qmlplugindump",
+    "qmlpreview",
+    "qmlprofiler",
+    "qmlscene",
+    "qmltc",
+    "qmltestrunner",
+    "qmltime",
+    "qopcuaxmldatatypes2cpp",
+    "qqem",
+    "qsb",
+    "qt-cmake",
+    "qt-cmake-create",
+    "qt-configure-module",
+    "qtdiag",
+    "qtdiag6",
+    "qtpaths",
+    "qtpaths6",
+    "qtplugininfo",
+    "shadergen",
+    "shapegen",
+    "svgtoqml"
+]
 
+variants = [
+    ["vfxbase-2026", "gcc-14.2", "python-3.13"]
 ]
 
 requires = [
-    "vfxplatform-2026"
 ]
 
 def commands():
     env.PATH.prepend("{root}/bin")
-    env.LD_LIBRARY_PATH.set("{root}/lib")
+    env.LD_LIBRARY_PATH.append("{root}/lib")
+    env.CMAKE_MODULE_PATH.append("{root}/lib/cmake")
+
+
+    env.Qt_ROOT.set("{root}")

@@ -17,10 +17,11 @@ tools = [
 
 ]
 
+build_commands = ""
+
 requires = [
     f"vfxbase-{version}"
     "gcc-14.2",
-    "glibc-2.34",
     "python-3.13",
     "qt-6.8",
     "openexr-3.4",

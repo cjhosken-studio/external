@@ -12,23 +12,26 @@ description = \
     """
 
 tools = [
-
+    "MaterialXView"
 ]
 
 variants = [
-    ["vfxbase-2025"],
-    ["vfxbase-2026"],
+    ["vfxbase-2026", "gcc-14.2", "python-3.13"],
 ]
 
 requires = [
-    "cmake-3.31.7+",
+    "openimageio-3.0",
+    "opencolorio-2.4",
+    "pybind11"
 ]
 
 def commands():
+    env.PATH.append("{root}/bin")
     env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_MODULE_PATH.append("{root}/lib/cmake")
+    env.PYTHONPATH.append("{root}/python")
+
 
     env.MaterialX_ROOT.set("{root}")
     env.MaterialX_INCLUDE_DIR.set("{root}/include")
     env.MaterialX_LIBRARY_DIR.set("{root}/lib")
-    

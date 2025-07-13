@@ -1,30 +1,43 @@
-C++ Version: 17
-
-All build shared (for now)
-
-OpenColorIO is a depencey of OpenImageIO. This is becase we'd rahter access ocio through oiio that oiio through ocio (chances are they'll be the same imports)
-
-Python 3.13 issues:
-
-Imath doesnt build (i think its because im using Python 3.13.5)
-OpenVDB doesn't build
-OPenUSD doesnt build
+All settings:
+ C++ version based on vfx ref
+ All shared (when possible)
 
 
-Do python 3.11 build for now?
+1. build gcc first
 
-Setup VFX Ref platform 2025 builds
-Setup VFX Ref platform 2026 builds
+others:
+ - CUDA
+ - FBX
+ - oneAPI
+ - OptiX
 
-sort out DNF installs
+Python stream Build order:
+    2. Python
+    3. Boost
+    4. PyBind
 
-Windows?
-Mac??
+    5. OpenColorIO
+    6. OpenImageIO
+    
+    8. MaterialX
 
 
+GCC
+- OpenVDB
+- Alembic
+- OpenEXR
+- OpenSubdiv
+- OpenTimelineIO
 
 
+BUild USD last
 
+IMath (with python) doesnt work with Python 3.13.5. Need to wait until support is added.
+Alembic needs Imath
 
+OpenTimelineIO needs Imath
 
-GCC needs C++ version setup
+OpenEXR is currently 3.3.4. it hsould be 3.4 as per the VFX ref platform
+OpenVDB is current 12.0.0. it should be 13 as per the VFX ref platform
+
+OpenImageIO is building python 3.9 package (it should be 3.133)

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0.3)
+cmake_minimum_required(VERSION 3.31.7)
 
 include(RezBuild)
 include(ExternalProject)
@@ -16,9 +16,9 @@ ExternalProject_Add(
         -DCMAKE_BUILD_TYPE=Release
         -DBUILD_SHARED_LIBS=ON
         
-
-
         -DPython_EXECUTABLE=$ENV{Python_EXECUTABLE}
+
+        -DOpenEXR_ROOT=$ENV{OpenEXR_ROOT}
 
         -DOCIO_INSTALL_EXT_PACKAGES=MISSING
 
@@ -34,6 +34,6 @@ ExternalProject_Add(
 install(
     CODE
     "execute_process(
-        COMMAND echo \"\n[REZ] OpenColorIO-${REZ_BUILD_PROJECT_VERSION} Install finished!\n\"
+        COMMAND echo \"\n[REZ] OpenColorIO-${VERSION} Install finished!\n\"
     )"
 )

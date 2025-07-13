@@ -16,7 +16,7 @@ tools = [
 ]
 
 variants = [
-    ["vfxplatform-2026"]
+    ["vfxbase-2026", "gcc-14.2", "python-3.13"]
 ]
 
 requires = [
@@ -27,5 +27,6 @@ def commands():
     env.CMAKE_MODULE_PATH.append("{root}/lib64/cmake")
     env.LD_LIBRARY_PATH.append("{root}/lib64")
 
-    env.BOOST_ROOT.set("{root}")
     env.Boost_ROOT.set("{root}")
+    env.Boost_INCLUDE_DIR.set("{root}/include")
+    env.Boost_LIBRARY_DIR.set("{root}/lib64")
