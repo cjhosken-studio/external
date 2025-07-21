@@ -36,7 +36,6 @@ def commands():
     env.PATH.append("{root}/bin")
     env.CC.set("{root}/bin/gcc")
     env.CXX.set("{root}/bin/g++")
-    env.LD_LIBRARY_PATH.prepend("{root}/lib")
-    env.LD_LIBRARY_PATH.prepend("{root}/lib64")
+    env.LD_LIBRARY_PATH.prepend("{root}/lib:{root}/lib64")
 
     env.GCC_ROOT.set("{root}")
