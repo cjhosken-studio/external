@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.31.7)
+cmake_minimum_required(VERSION 3.31.8)
 
 include(RezBuild)
 include(ExternalProject)
@@ -11,10 +11,19 @@ ExternalProject_Add(
     PREFIX pybind11
     INSTALL_DIR $ENV{REZ_BUILD_INSTALL_PATH}
     CONFIGURE_COMMAND python3 -m pip install pytest==8.4.1
-    CMAKE_ARGS
-        -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
-        -DCMAKE_CXX_STANDARD=$ENV{VFX_CXX_STANDARD}
-        -DCMAKE_BUILD_TYPE=Release
+
+    BUILD_IN_SOURCE 1
+
+    BUILD_COMMAND 
+        mkdir -p build &&
+        cd build &&
+        cmake
+            -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+            -DCMAKE_BUILD_TYPE=Release
+            ..
+    INSTALL_COMMAND 
+        cd build &&
+        make install -j
 )
 
 install(

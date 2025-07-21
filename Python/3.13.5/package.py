@@ -14,29 +14,44 @@ description = \
     The Python interpreter and the extensive standard library are available in source or binary form without charge for all major platforms, and can be freely distributed.
     """
 
-tools = [
-    "f2py",
-    "idle3",
-    "idle3.13",
-    "pip3",
-    "pip3.13",
-    "pydoc3",
-    "pydoc3.13",
-    "python3",
-    "python3.13",
-    "python3.13-config",
-    "python3.13d",
-    "python3.13d-config",
-    "python3-config",
-]
-
 variants = [
-    ["vfxbase-2026", "gcc-14.2"]
+    ["platform-linux", "arch-x86_64"],
 ]
-
 
 requires = [
 ]
+
+tools = [
+        "f2py",
+        "idle3",
+        "idle3.13",
+        "pip3",
+        "pip3.13",
+        "pydoc3",
+        "pydoc3.13",
+        "python3",
+        "python3.13",
+        "python3.13-config",
+        "python3.13d",
+        "python3.13d-config",
+        "python3-config",
+    ]
+
+build_command = \
+    f"""
+    set -e
+    wget https://www.python.org/ftp/python/{version}/Python-{version}.tar.xz
+    tar -xf Python-{version}.tar.xz
+    cd Python-{version}
+    ./configure --prefix=$REZ_BUILD_INSTALL_PATH \
+                --enable-optimizations \
+                --with-lto \
+                --with-ensurepip=install \
+                --enable-shared \
+                LDFLAGS="-Wl,-rpath={{root}}/lib"
+    make -j$NPROC
+    make install
+    """
 
 def commands():
     env.PATH.prepend("{root}/bin")

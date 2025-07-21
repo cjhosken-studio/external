@@ -8,8 +8,6 @@ authors = [
 
 description = \
     """
-    Imath is a basic, light-weight, and efficient C++ representation of 2D and 3D vectors and matrices and other simple but useful mathematical objects, functions, and data types common in computer graphics applications, including the “half” 16-bit floating-point type.
-    Imath also includes optional python bindings for all types and functions, including optimized implementations of vector and matrix arrays.
     """
 
 tools = [
@@ -17,16 +15,19 @@ tools = [
 ]
 
 variants = [
-    ["vfxbase-2026", "gcc-14.2", "python-3.13", "boost-1.88"],
+    ["studio_core-2026"],
 ]
 
+requires = [
+    "boost-1.88"
+]
 
 def commands():
-    env.PATH.append("{root}/bin")
-    
-    env.CMAKE_MODULE_PATH.append("{root}/lib64/cmake")
     env.LD_LIBRARY_PATH.append("{root}/lib64")
+    env.CMAKE_MODULE_PATH.append("{root}/lib64/cmake")
+    env.PYTHONPATH.append("{root}/lib/python3.13/site-packages")
 
     env.Imath_ROOT.set("{root}")
     env.Imath_INCLUDE_DIR.set("{root}/include:{root}/include/Imath")
     env.Imath_LIBRARY_DIR.set("{root}/lib64")
+    

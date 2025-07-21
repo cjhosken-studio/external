@@ -1,14 +1,13 @@
 name = "opentimelineio"
 
-version = "0.17.0"
+version = "3.6.1"
 
 authors = [
-    "Academy Software Foundation"
+    ""
 ]
 
 description = \
     """
-    OpenTimelineIO is an interchange format and API for editorial cut information. OTIO contains information about the order and length of cuts and references to external media.    
     """
 
 tools = [
@@ -16,19 +15,23 @@ tools = [
 ]
 
 variants = [
-    ["vfxbase-2026", "gcc-14.2", "python-3.13"],
+    ["studio_core-2026"],
 ]
 
 requires = [
-    "imath",
-    "pybind11"
+    "imath-3",
+    "pybind11-3",
 ]
 
 def commands():
-    env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_MODULE_PATH.append("{root}/lib/cmake")
+    env.PATH.append("{root}/bin")
+    env.LD_LIBRARY_PATH.append("{root}/lib64:{root}/lib")
+    env.CMAKE_MODULE_PATH.append("{root}/lib64/cmake")
+
+    env.PYTHONPATH.append("{root}/python")
+
+
 
     env.OpenTimelineIO_ROOT.set("{root}")
     env.OpenTimelineIO_INCLUDE_DIR.set("{root}/include")
-    env.OpenTimelineIO_LIBRARY_DIR.set("{root}/lib")
-    
+    env.OpenTimelineIO_LIBRARY_DIR.set("{root}/lib:{root}/lib64")

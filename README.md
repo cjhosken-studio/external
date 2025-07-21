@@ -1,16 +1,39 @@
 
+Current Issues:
 
-BUild USD last
+- OpenEXR 3.4 has not been released yet. This means OCOIO and OIIO cannot be built as well. For the time being OpenEXR is 3.3.4
 
-IMath (with python) doesnt work with Python 3.13.5. Need to wait until support is added.
-Alembic needs Imath
-OpenTimelineIO needs Imath
-
-OpenEXR is currently 3.3.4. it hsould be 3.4 as per the VFX ref platform
-OpenVDB is current 12.0.0. it should be 13 as per the VFX ref platform
-
-OpenImageIO is building python 3.9 package (it should be 3.133)
+- OpenVDB 13 has not been released yet. For the time being OpenVDB is 12.0.1
 
 
+Build Order:
 
-GlibC needs building
+1. Cmake / python
+2. GCC / cuda
+3. studio_core
+3. oneAPI / FBX / Boost / Qt / Pybind11 / Imath
+4. Ptex / OpenVDB / OpenEXR / Alembic
+5. OpenSubdiv / OpenColorIO
+8. OpenImageIO
+9. studio_vfxplatform
+9. OpenUSD / OpenTimelineIO / OptiX
+
+
+
+
+Extra thingies:
+
+CUDA needs properly linking to OpenSubdiv
+
+- LLVM?
+- OSL
+
+- Vulkan?
+- OpenCL?
+- OpenGL?
+- Emscripten?
+
+
+PYTHON MODULES:
+- TensorFlow/PyTorch
+- OpenCV

@@ -18,7 +18,7 @@ tools = [
 ]
 
 variants = [
-    ["vfxbase-2026", "gcc-14.2", "python-3.13"],
+    ["studio_core-2026"],
 ]
 
 requires = [

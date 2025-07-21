@@ -13,11 +13,15 @@ ExternalProject_Add(
     PREFIX qt
     INSTALL_DIR $ENV{REZ_BUILD_INSTALL_PATH}
     CONFIGURE_COMMAND python3 -m pip install PySide6==6.8.1 PyQt6==6.8.1
-    CMAKE_ARGS
-        -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
-        -DCMAKE_BUILD_TYPE=Release
-        -DCMAKE_CXX_STANDARD=$ENV{VFX_CXX_STANDARD}
-        -DBUILD_SHARED_LIBS=ON
+    
+   BUILD_COMMAND <SOURCE_DIR>/configure
+        -prefix <INSTALL_DIR>
+        -release
+        -opensource
+        -confirm-license
+        && make -Wno-dev -j
+        
+    INSTALL_COMMAND make install
 )
 
 install(

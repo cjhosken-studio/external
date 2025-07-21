@@ -17,11 +17,11 @@ tools = [
 ]
 
 variants = [
-    ["vfxbase-2026", "gcc-14.2", "python-3.13", "boost-1.88"]
+    ["studio_core-2026"]
 ]
 
 requires = [
-
+    "boost-1.88",
 ]
 
 def commands():

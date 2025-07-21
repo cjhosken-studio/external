@@ -19,8 +19,7 @@ tools = [
 ]
 
 variants = [
-    ["vfxbase-2026", "gcc-14.2"],
-    #["vfxplatform-2026"]
+    ["studio_core-2026"],
 ]
 
 

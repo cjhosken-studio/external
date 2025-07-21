@@ -16,12 +16,34 @@ tools = [
 ]
 
 variants = [
-    ["vfxbase-2025"],
+    ["studio_core-2026"],
 ]
 
 requires = [
-    "cmake-3.31.7+",
 ]
+
+build_command = f"""
+set -e  # Exit immediately if any command fails
+
+# Create directories
+mkdir -p optix
+
+# Download with progress and fail if HTTP error
+echo "Downloading OptiX v{version}..."
+curl -L https://github.com/NVIDIA/optix-dev/archive/refs/tags/v{version}.tar.gz -o ./optix.tar.gz ||
+
+# Extract with error checking
+echo "Extracting archive..."
+tar -xzf optix.tar.gz -C optix --strip-components=1
+
+# Copy files
+echo "Installing to $REZ_BUILD_INSTALL_PATH..."
+cp -r optix/* "$REZ_BUILD_INSTALL_PATH/" ||
+# Clean up
+rm -rf optix optix.tar.gz
+
+echo "[REZ] OptiX-{version} installed successfully"
+"""
 
 def commands():
     env.OptiX_ROOT.set("{root}")

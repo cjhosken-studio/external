@@ -5,34 +5,27 @@ include(ExternalProject)
 
 get_filename_component(VERSION ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 
-# Set up build and install directories
-set(BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}/imath-build)
-set(INSTALL_DIR $ENV{REZ_BUILD_INSTALL_PATH})
-
 ExternalProject_Add(
     Imath
     URL https://github.com/AcademySoftwareFoundation/Imath/archive/refs/tags/v${VERSION}.tar.gz
     PREFIX imath
-    # Use separate build directory
-    BINARY_DIR ${BUILD_DIR}
-    INSTALL_DIR ${INSTALL_DIR}
-    CMAKE_ARGS
+    INSTALL_DIR $ENV{REZ_BUILD_INSTALL_PATH}
+    CONFIGURE_COMMAND python3 -m pip install numpy==1.26.4
+    BUILD_IN_SOURCE 1
+    BUILD_COMMAND
+        mkdir -p build &&
+        cd build &&
+        cmake
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
-        -DCMAKE_CXX_STANDARD=$ENV{VFX_CXX_STANDARD}
         -DCMAKE_BUILD_TYPE=Release
-
-    # These steps replicate the standard CMake process
-    CONFIGURE_COMMAND ${CMAKE_COMMAND} <SOURCE_DIR> 
-        -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
-        -DCMAKE_CXX_STANDARD=$ENV{VFX_CXX_STANDARD}
-        -DCMAKE_BUILD_TYPE=Release
+        -DBUILD_SHARED_LIBS=ON
         -DPYTHON=ON
+        -DBUILD_TESTING=OFF
+        ..
 
-        -DCMAKE_POSITION_INDEPENDENT_CODE=ON  # Proper way to enable PIC
-        -DBoost_ROOT=$ENV{Boost_ROOT}
-        -B <BINARY_DIR>
-    BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> --config Release
-    INSTALL_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> --target install --config Release
+    INSTALL_COMMAND 
+        cd build &&
+        make install -j
 )
 
 install(

@@ -1,4 +1,4 @@
-name = "usd"
+name = "openusd"
 
 version = "25.05"
 
@@ -8,30 +8,32 @@ authors = [
 
 description = \
     """
-    Universal Scene Description (USD) is an efficient, scalable system for authoring, reading, and streaming time-sampled scene description for interchange between graphics applications.
+    USD is a high-performance extensible software platform for collaboratively constructing animated 3D scenes, designed to meet the needs of large-scale film and visual effects production.
     """
 
-
-
 tools = [
-    
+ 
 ]
 
 variants = [
-    ["vfxbase-2026", "gcc-14.2", "python-3.13", "opencolorio-2.4", "ptex-2.4", "opensubdiv-3.6"],
+    ["studio_core-2026"]
 ]
 
 requires = [
-    "openimageio"
+    "opensubdiv-3.6",
+    "boost-1.88",
+    "oneapi-2025",
+    "materialx-1.39",
+    "openimageio-3",
+    "opencolorio-2.4",
+    "ptex-2.4",
+    "alembic-1.8"
 ]
 
 def commands():
-    env.PATH.append("{root}")
-    env.PYTHONPATH.append("{root}/python")
+    env.PATH.prepend("{root}/bin")
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_MODULE_PATH.append("{root}/cmake")
-    env.PXR_PLUGINPATHNAME.append("{root}/plugin/usd")
+    env.CMAKE_MODULE_PATH.append("{root}/lib/cmake")
 
-    env.USD_ROOT.set("{root}")
-    env.USD_INCLUDE_DIR.set("{root}/include")
-    env.USD_LIBRARY_DIR.set("{root}/lib")
+    env.USD_DIR.set("{root}")
+    env.pxr_DIR.set("{root}")

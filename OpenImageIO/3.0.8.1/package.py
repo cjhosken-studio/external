@@ -22,12 +22,15 @@ tools = [
 ]
 
 variants = [
-    ["vfxbase-2026", "gcc-14.2", "python-3.13", "openexr-3.3+"],
+    ["studio_core-2026"],
 ]
 
 requires = [
+    "qt-6",
     "ptex-2.4",
-    "pybind11",
+    "openexr-3+",
+    "pybind11-3+",
+    "opencolorio-2.4"
 ]
 
 def commands():

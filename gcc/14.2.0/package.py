@@ -19,17 +19,16 @@ tools = [
     "cpp",
     "gcc-ar",
     "gcc-ranlib",
-    "gfortran",
     "gcc-nm",
     "gcov"
 ]
 
 variants = [
-    ["vfxbase-2026"],
+    ["platform-linux", "arch-x86_64"],
 ]
 
-requires = [
-    "cmake-3.31.7+"
+build_requires = [
+    "cmake-3.31.8+"
 ]
 
 def commands():

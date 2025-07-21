@@ -30,7 +30,12 @@ tools = [
 ]
 
 variants = [
-    ["vfxbase-2026", "gcc-14.2", "python-3.13", "openexr-3.3+"], # OpenEXR should be 3.4
+    ["studio_core-2026"], # OpenEXR should be 3.4
+]
+
+requires = [
+    "openexr-3+",
+    
 ]
 
 def commands():
