@@ -25,14 +25,17 @@ Extra thingies:
 
 CUDA needs properly linking to OpenSubdiv
 
-- LLVM?
-- OSL
 
+-OpenAssetIO??
 - Vulkan?
+
 - OpenCL?
 - OpenGL?
+
 - Emscripten?
 
+
+- OSL is a nightmare to build at the moment. Maybe come back to it later.
 
 PYTHON MODULES:
 - TensorFlow/PyTorch
