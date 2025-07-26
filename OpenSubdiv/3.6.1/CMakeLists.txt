@@ -18,13 +18,13 @@ ExternalProject_Add(
         -DNO_PTEX=ON
         -DPTEX_LOCATION=$ENV{Ptex_ROOT}
 
-        -DNO_TBB=ON
+        -DNO_TBB=OFF
         -DNO_OMP=ON
 
-        -DNO_CUDA=ON
+        -DNO_CUDA=ON # change once opensubdiv updates
         -DCUDA_TOOLKIT_ROOT_DIR=$ENV{CUDA_ROOT}
 
-        -DNO_OPENCL=ON
+        -DNO_OPENCL=ON # change once opensudiv updates
         -DNO_CLEW=ON
         -DNO_OPENGL=OFF
         -DNO_METAL=OFF

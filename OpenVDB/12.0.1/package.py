@@ -32,4 +32,4 @@ def commands():
 
     env.OpenVDB_ROOT.set("{root}")
     env.OpenVDB_INCLUDE_DIR.set("{root}/include")
-    env.OPENVDB_LIBRARY_DIR.set("{root}/lib64")
+    env.OpenVDB_LIBRARY_DIR.set("{root}/lib64")

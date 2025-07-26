@@ -51,6 +51,8 @@ build_command = \
                 LDFLAGS="-Wl,-rpath={{root}}/lib"
     make -j$NPROC
     make install
+
+    $REZ_BUILD_INSTALL_PATH/bin/python3 -m pip install numpy==1.26.4
     """
 
 def commands():

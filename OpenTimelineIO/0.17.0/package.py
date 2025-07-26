@@ -19,6 +19,7 @@ variants = [
 ]
 
 requires = [
+    "git",
     "imath-3",
     "pybind11-3",
 ]

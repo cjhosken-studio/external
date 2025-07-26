@@ -23,7 +23,9 @@ variants = [
 
 requires = [
     "ptex-2.4",
-    "cuda-12.9"
+    "cuda-12.9",
+    "opencl-2025",
+    "oneapi-2025"
 ]
 
 def commands():
