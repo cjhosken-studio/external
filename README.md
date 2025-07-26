@@ -104,11 +104,14 @@ Python
 Qt
     - 6.8.1
 
-Vulkan
-    - 1.4.321.1
+rez
+    - 3.2.1
 
 Studio
     - 2026
+
+Vulkan
+    - 1.4.321.1
 
 
 

@@ -27,6 +27,7 @@ build_command = \
     f"""
     wget https://registrationcenter-download.intel.com/akdlm/IRC_NAS/2d607ce3-9aa8-492d-a97d-e473dc37be66/intel-cpp-essentials-{version}.532_offline.sh
     sh ./intel-cpp-essentials-{version}.532_offline.sh -a -s --eula accept --action install --install-dir $REZ_BUILD_INSTALL_PATH
+    rm -rf $HOME/intel
     """
 
 def commands():
