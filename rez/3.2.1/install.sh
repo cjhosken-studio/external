@@ -60,7 +60,7 @@ if ! grep -q "REZ CONFIGURATION" "$BASHRC_FILE"; then
     cat << EOF >> "$BASHRC_FILE"
 
 # REZ CONFIGURATION
-export PATH="\$PATH:$REZ_BIN_PATH"
+export PATH="\$PATH:$REZ_BIN_PATH/rez"
 if [ -f "$REZ_COMPLETE_PATH" ]; then
     source "$REZ_COMPLETE_PATH"
 fi
