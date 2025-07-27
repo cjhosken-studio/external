@@ -8,7 +8,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 VERSION=$(basename "$SCRIPT_DIR")
 BUILD_DIR="$SCRIPT_DIR/build"
 BASHRC_FILE="$HOME/.bashrc"
-REZ_BIN_PATH="/opt/rez/bin"
+REZ_BIN_PATH="/opt/rez/bin/rez"
 REZ_COMPLETE_PATH="/opt/rez/completion/complete.sh"
 
 echo "=== Rez Installer ==="
@@ -60,7 +60,7 @@ if ! grep -q "REZ CONFIGURATION" "$BASHRC_FILE"; then
     cat << EOF >> "$BASHRC_FILE"
 
 # REZ CONFIGURATION
-export PATH="\$PATH:$REZ_BIN_PATH/rez"
+export PATH="\$PATH:$REZ_BIN_PATH"
 if [ -f "$REZ_COMPLETE_PATH" ]; then
     source "$REZ_COMPLETE_PATH"
 fi
@@ -69,6 +69,8 @@ EOF
 else
     echo "Rez configuration already exists in $BASHRC_FILE"
 fi
+
+$REZ_BIN_PATH/rez-bind --quickstart
 
 echo ""
 echo "SUCCESS! Rez $VERSION has been installed and configured."

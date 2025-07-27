@@ -31,12 +31,31 @@ build_command = \
     """
 
 def commands():
+    import platform
+    import os
     major_minor_version = "2025.2"
 
-    env.PATH.prepend(f"{{root}}/{major_minor_version}/bin")
-    env.LD_LIBRARY_PATH.append(f"{{root}}/{major_minor_version}/lib")
+    if platform.system() == "Windows":
+        os.environ["PATH"] = f"{{root}}\\{major_minor_version}\\bin;" + os.environ.get("PATH")
+        os.environ["LD_LIBRARY_PATH"] + f";{{root}}\\{major_minor_version}\\lib"
 
-    env.oneAPI_ROOT.set(f"{{root}}/{major_minor_version}")
-    env.oneAPI_INCLUDE_DIR.set(f"{{root}}/{major_minor_version}/include")
-    env.oneAPI_LIBRARY_DIR.set(f"{{root}}/{major_minor_version}/lib")
 
+        os.environ["oneAPI_ROOT"] = f"{{root}}\\{major_minor_version}"
+        os.environ["oneAPI_INCLUDE_DIR"] = f"{{root}}\\{major_minor_version}\\include"
+        os.environ["oneAPI_LIBRARY_DIR"] = f"{{root}}\\{major_minor_version}\\lib"
+
+    else:
+        os.environ["PATH"] = f"{{root}}/{major_minor_version}/bin:" + os.environ.get("PATH")
+        os.environ["LD_LIBRARY_PATH"] + f":{{root}}/{major_minor_version}/lib"
+
+
+        os.environ["oneAPI_ROOT"] = f"{{root}}/{major_minor_version}"
+        os.environ["oneAPI_INCLUDE_DIR"] = f"{{root}}/{major_minor_version}/include"
+        os.environ["oneAPI_LIBRARY_DIR"] = f"{{root}}/{major_minor_version}/lib"
+
+import platform
+
+if platform.system() == "Windows":
+    build_command = "{root}\\build.bat"
+else:
+    build_command = ""

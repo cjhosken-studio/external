@@ -21,17 +21,28 @@ tools = [
     "git-upload-archive"
 ]
 
-requires = [
-    "cmake-3.31.7+",
-]
+requires = []
 
 def commands():
-    env.PATH.prepend("{root}/bin")
-    env.GIT_EXEC_PATH = "{root}/libexec/git-core"
-    env.GIT_TEMPLATE_DIR = "{root}/share/git-core/templates"
-    
-    env.LD_LIBRARY_PATH.append("{root}/lib")
+    import platform
+    import os
 
-    
-    # Set man pages path
-    env.MANPATH.prepend("{root}/share/man")
+    if platform.system() == "Windows":
+        os.environ["PATH"] = "{root};{root}\\bin;" + os.environ.get("PATH")
+    else:
+        env.PATH.prepend("{root}/bin")
+        env.GIT_EXEC_PATH = "{root}/libexec/git-core"
+        env.GIT_TEMPLATE_DIR = "{root}/share/git-core/templates"
+        
+        env.LD_LIBRARY_PATH.append("{root}/lib")
+
+        
+        # Set man pages path
+        env.MANPATH.prepend("{root}/share/man")
+
+import platform
+
+if platform.system() == "Windows":
+    build_command="{root}\\build.bat"
+else:
+    build_command="{root}"

@@ -8,58 +8,76 @@ authors = [
 
 description = \
     """
-    Python is an interpreted, object-oriented, high-level programming language with dynamic semantics. 
-    Its high-level built in data structures, combined with dynamic typing and dynamic binding, make it very attractive for Rapid Application Development, as well as for use as a scripting or glue language to connect existing components together. 
-    Python's simple, easy to learn syntax emphasizes readability and therefore reduces the cost of program maintenance. Python supports modules and packages, which encourages program modularity and code reuse. 
+    Python is an interpreted, object-oriented, high-level programming language with dynamic semantics.
+    Its high-level built in data structures, combined with dynamic typing and dynamic binding, make it very attractive for Rapid Application Development, as well as for use as a scripting or glue language to connect existing components together.
+    Python's simple, easy to learn syntax emphasizes readability and therefore reduces the cost of program maintenance. Python supports modules and packages, which encourages program modularity and code reuse.
     The Python interpreter and the extensive standard library are available in source or binary form without charge for all major platforms, and can be freely distributed.
     """
 
-variants = [
-    ["platform-linux", "arch-x86_64"],
-]
+variants = []
 
-requires = [
-]
+requires = []
 
 tools = [
-        "f2py",
-        "idle3",
-        "idle3.13",
-        "pip3",
-        "pip3.13",
-        "pydoc3",
-        "pydoc3.13",
-        "python3",
-        "python3.13",
-        "python3.13-config",
-        "python3.13d",
-        "python3.13d-config",
-        "python3-config",
-    ]
-
-build_command = \
-    f"""
-    set -e
-    wget https://www.python.org/ftp/python/{version}/Python-{version}.tar.xz
-    tar -xf Python-{version}.tar.xz
-    cd Python-{version}
-    ./configure --prefix=$REZ_BUILD_INSTALL_PATH \
-                --enable-optimizations \
-                --with-lto \
-                --with-ensurepip=install \
-                --enable-shared \
-                LDFLAGS="-Wl,-rpath={{root}}/lib"
-    make -j$NPROC
-    make install
-
-    $REZ_BUILD_INSTALL_PATH/bin/python3 -m pip install numpy==1.26.4
-    """
+    "f2py",
+    "idle3",
+    "idle3.13",
+    "pip3",
+    "pip3.13",
+    "pydoc3",
+    "pydoc3.13",
+    "python3",
+    "python3.13",
+    "python3.13-config",
+    "python3.13d",
+    "python3.13d-config",
+    "python3-config",
+]
 
 def commands():
-    env.PATH.prepend("{root}/bin")
-    env.LD_LIBRARY_PATH.append("{root}/lib")
+    import platform
+    import os
+    
+    # Platform-specific environment setup
+    if platform.system() == "Windows":
+        os.environ["PATH"] = "{root};{root}\\Scripts;" + os.environ.get("PATH")
+        
+        alias("python3", "{root}\\python.exe")
+        alias("python3.13", "{root}\\python.exe")
 
-    env.Python_ROOT.set("{root}")
-    env.Python_EXECUTABLE.set("{root}/bin/python3")
+        os.environ["Python_ROOT"] = "{root}"
+        os.environ["PYTHON_INCLUDE_DIR"] = "{root}\\include"
+        os.environ["PYTHON_LIBRARY_DIR"] = "{root}\\Lib"
+        os.environ["PYTHON_EXECUTABLE"] = "{root}\\python.exe"
 
-    alias("python", "{root}/bin/python3")
+    else:
+        os.environ["PATH"] = "{root}/bin:" + os.environ.get("PATH")
+        os.environ["LD_LIBRARY_PATH"] += "{root}/lib"
+        os.environ["PYTHON_EXECUTABLE"] = "{root}/bin/python3"
+        
+        alias("python", "{root}/bin/python3")
+
+        os.environ["PYTHON_ROOT"] = "{root}"
+        os.environ["PYTHON_INCLUDE_DIR"] = "{root}/include"
+        os.environ["PYTHON_LIBRARY_DIR"] = "{root}/lib"
+
+import platform
+
+if platform.system() == "Windows":
+    build_command = "{root}\\build.bat"
+else:
+    build_command = """
+        # Unix-like build commands (Linux/macOS)
+        wget https://www.python.org/ftp/python/{version}/Python-{version}.tar.xz
+        tar -xf Python-{version}.tar.xz
+        cd Python-{version}
+        ./configure --prefix=$REZ_BUILD_INSTALL_PATH
+        --enable-optimizations
+        --with-lto
+        --with-ensurepip=install
+        --enable-shared
+        LDFLAGS='-Wl,-rpath={root}/lib'
+        make -j$NPROC
+        make install
+        {root}/bin/python3 -m pip install numpy==1.26.4
+    """

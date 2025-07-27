@@ -32,3 +32,8 @@ def commands():
     command("source $NVM_DIR/nvm.sh")
     
     env.PATH.append(f"{{root}}/versions/node/v{version}/bin")
+
+import platform
+
+if platform.system() == "Windows":
+    build_command = "{root}\\build.bat"

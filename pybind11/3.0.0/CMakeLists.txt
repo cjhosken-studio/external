@@ -15,15 +15,14 @@ ExternalProject_Add(
     BUILD_IN_SOURCE 1
 
     BUILD_COMMAND 
-        mkdir -p build &&
-        cd build &&
+        mkdir -p build;
+        cd build;
         cmake
             -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
             -DCMAKE_BUILD_TYPE=Release
             ..
     INSTALL_COMMAND 
-        cd build &&
-        make install -j
+        cd build; make install -j
 )
 
 install(
