@@ -20,7 +20,7 @@ if not exist "git-%VERSION%.exe" (
 
 :: Install git
 echo Installing git...
-"git-%VERSION%.exe" /VERYSILENT /DIR=%REZ_BUILD_INSTALL_PATH%
+"git-%VERSION%.exe" /VERYSILENT
 if errorlevel 1 (
     echo ERROR: git installation failed
     exit /b 1
