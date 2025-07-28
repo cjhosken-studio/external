@@ -72,20 +72,6 @@ def commands():
 import platform
 
 if platform.system() == "Windows":
-    build_command = "{root}\\build.bat"
+    build_command = "{root}/build.bat"
 else:
-    build_command = """
-        # Unix-like build commands (Linux/macOS)
-        wget https://www.python.org/ftp/python/{version}/Python-{version}.tar.xz
-        tar -xf Python-{version}.tar.xz
-        cd Python-{version}
-        ./configure --prefix=$REZ_BUILD_INSTALL_PATH
-        --enable-optimizations
-        --with-lto
-        --with-ensurepip=install
-        --enable-shared
-        LDFLAGS='-Wl,-rpath={root}/lib'
-        make -j$NPROC
-        make install
-        {root}/bin/python3 -m pip install numpy==1.26.4
-    """
+    build_command = "{root}/build.sh"

@@ -62,11 +62,6 @@ def commands():
 import platform
 
 if platform.system() == "Windows":
-    build_command = "{root}\\build.bat"
+    build_command = "{root}/build.bat"
 else:
-    installer = f"cuda_{version}_575.57.08_linux.run"
-
-    build_command = f"""
-    wget https://developer.download.nvidia.com/compute/cuda/{version}/local_installers/{installer}
-    sh ./{installer} --silent --toolkit --defaultroot=$REZ_BUILD_INSTALL_PATH --toolkitpath=$REZ_BUILD_INSTALL_PATH
-    """
+    build_command = "{root}/build.sh"

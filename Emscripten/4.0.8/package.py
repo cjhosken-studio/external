@@ -11,17 +11,7 @@ description = \
     Emscripten is a complete compiler toolchain to WebAssembly, using LLVM, with a special focus on speed, size, and the Web platform.
     """
 
-tools = [
-
-]
-
-requires = []
-
-build_command = f"""
-git clone https://github.com/emscripten-core/emsdk.git $REZ_BUILD_INSTALL_PATH
-$REZ_BUILD_INSTALL_PATH/emsdk install {version}
-$REZ_BUILD_INSTALL_PATH/emsdk activate {version}
-"""
+tools = []
 
 def commands():
     env.EMSDK = "{root}"
@@ -33,3 +23,10 @@ def commands():
     # Set other variables normally set by emsdk_env.sh
     env.EMSCRIPTEN = "{root}/emsdk/upstream/emscripten"
     env.LLVM_ROOT = "{root}/emsdk/upstream/bin"
+
+import platform
+
+if platform.system() == "Windows":
+    build_command = ""
+else:
+    build_command = "{root}/build.sh"
