@@ -40,15 +40,23 @@ def commands():
     
     # Platform-specific environment setup
     if platform.system() == "Windows":
-        os.environ["PATH"] = "{root};{root}\\Scripts;" + os.environ.get("PATH")
-        
-        alias("python3", "{root}\\python.exe")
-        alias("python3.13", "{root}\\python.exe")
+        env.PATH.prepend("{root}")
+        env.PATH.prepend("{root}/Scripts")
 
-        os.environ["Python_ROOT"] = "{root}"
-        os.environ["PYTHON_INCLUDE_DIR"] = "{root}\\include"
-        os.environ["PYTHON_LIBRARY_DIR"] = "{root}\\Lib"
-        os.environ["PYTHON_EXECUTABLE"] = "{root}\\python.exe"
+        env.Python_ROOT.set("{root}")
+        env.PYTHON_ROOT.set("{root}")
+
+        env.Python_INCLUDE_DIR.set("{root}/include")
+        env.PYTHON_INCLUDE_DIR.set("{root}/include")
+        
+        env.Python_LIBRARY_DIR.set("{root}/lib")
+        env.PYTHON_LIBRARY_DIR.set("{root}/lib")
+
+        env.Python_EXECUTABLE.set("{root}/python.exe")
+        env.PYTHON_EXECUTABLE.set("{root}/python.exe")
+        
+        alias("python3", "{root}/python.exe")
+        alias("python3.13", "{root}/python.exe")
 
     else:
         os.environ["PATH"] = "{root}/bin:" + os.environ.get("PATH")

@@ -24,10 +24,9 @@ requires = []
 
 def commands():
     import platform
-    import os
 
     if platform.system() == "Windows":
-        os.environ["PATH"] = "{root}\\bin;" + os.environ.get("PATH")
+        env.PATH.prepend("{root}/bin")
     else:
         env.PATH.append("{root}/bin")
         env.LD_LIBRARY_PATH.append("{root}/lib")

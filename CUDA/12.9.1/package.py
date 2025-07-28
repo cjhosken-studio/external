@@ -43,16 +43,13 @@ def commands():
     import os
 
     if platform.system() == "Windows":
-        cuda_root = "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.9"
-        os.environ["PATH"] = f"{cuda_root}\\bin;" + os.environ.get("PATH")
-        os.environ["LD_LIBRARY_PATH"] += f";{cuda_root}\\lib\\x64"
-
+        cuda_root = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.9"
+        env.PATH.prepend(f"{cuda_root}/bin")
         
-        os.environ["CUDA_ROOT"] = cuda_root
-        os.environ["CUDA_INCLUDE_DIR"] = f"{cuda_root}\\include"
-        os.environ["CUDA_LIBRARY_DIR"] = f"{cuda_root}\\lib\\x64"
-        os.environ["CMAKE_MODULE_PATH"] += f";{cuda_root}\\lib\\cmake"
-
+        env.CUDA_ROOT.set(cuda_root)
+        env.CUDA_INCLUDE_DIR.set(f"{cuda_root}/include")
+        env.CUDA_LIBRARY_DIR.set(f"{cuda_root}/lib/x64")
+        env.CMAKE_MODULE_PATH.append(f"{cuda_root}/lib/cmake")
     else:
         os.environ["PATH"] = "{root}/bin:" + os.environ.get("PATH")
         os.environ["LD_LIBRARY_PATH"] += ":{root}/lib64"

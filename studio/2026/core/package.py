@@ -20,21 +20,22 @@ requires = [
 if platform.system() == "Linux":
     requires += ["gcc-14.2"]
 elif platform.system() == "Windows":
-    requires += ["windows-2025"]
+    requires += ["windows"]
 
 def commands():
     import platform
     import os
     
     # Set C++20 standard for all platforms
-    os.environ["CMAKE_CXX_STANDARD"] = "20"
+    env.CMAKE_CXX_STANDARD.set("20")
     
     # Platform-specific configurations
     if platform.system() == "Windows":
         # Windows-specific settings
-        os.environ["CXXFLAGS"] = "/std:c++20 /EHsc /Zi"
-        os.environ["CMAKE_GENERATOR"] = "Visual Studio 17 2022"  # Adjust version as needed
-            
+        #os.environ["CXXFLAGS"] = "/std:c++20 /EHsc /Zi"
+        os.environ["CMAKE_MODULE_PATH"] = "C:/opt/rez/Lib/site-packages/rezplugins/build_system/cmake_files"
+        env.CMAKE_MODULE_PATH.set("C:/opt/rez/Lib/site-packages/rezplugins/build_system/cmake_files")
+        env.CMAKE_GENERATOR.set("Visual Studio 17 2022")  # Adjust version as needed            
     else:
         # Unix-like systems (Linux, macOS)
         os.environ["CXXFLAGS"] = "-std=c++20 -fPIC"
@@ -46,13 +47,6 @@ def commands():
             os.environ["CXXFLAGS"] += " -stdlib=libc++"
     
     # Common compiler flags for all platforms
-    os.environ["CMAKE_BUILD_TYPE"] = os.environ.get("CMAKE_BUILD_TYPE", "Release")
-    
-    # Optional: Set compiler explicitly if needed
-    if "CXX" not in os.environ:
-        if platform.system() == "Windows":
-            os.environ["CXX"] = "cl.exe"
-        else:
-            os.environ["CXX"] = "g++"  # or clang++ if preferred
+    env.CMAKE_BUILD_TYPE.set("Release")
 
 build_command = ""

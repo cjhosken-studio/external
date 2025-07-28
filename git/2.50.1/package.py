@@ -25,10 +25,10 @@ requires = []
 
 def commands():
     import platform
-    import os
 
     if platform.system() == "Windows":
-        os.environ["PATH"] = "{root};{root}\\bin;" + os.environ.get("PATH")
+        env.PATH.prepend("{root}")
+        env.PATH.prepend("{root}/bin")
     else:
         env.PATH.prepend("{root}/bin")
         env.GIT_EXEC_PATH = "{root}/libexec/git-core"

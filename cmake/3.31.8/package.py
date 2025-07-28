@@ -14,8 +14,8 @@ def commands():
     import os
 
     if platform.system() == "Windows":
-        os.environ["PATH"] = "{root}\\bin;" + os.environ.get("PATH")
-        os.environ["CMAKE_PREFIX_PATH"] += ";{root}\\share\\cmake-3.31"
+        env.PATH.prepend("{root}/bin")
+        env.CMAKE_PREFIX_PATH.append("{root}/share/cmake-3.31")
     else:
         os.environ["PATH"] = "{root}/bin;" + os.environ.get("PATH")
         os.environ["CMAKE_PREFIX_PATH"] += ";{root}/share/cmake-3.31"

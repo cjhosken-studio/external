@@ -20,10 +20,10 @@ if not exist "oneapi-%VERSION%.exe" (
 
 :: Install OneAPI
 echo Installing OneAPI...
-"oneapi-%VERSION%.exe" -s -a --silent --eula accept --action install --install-dir %REZ_BUILD_INSTALL_PATH%
-::if errorlevel 1 (
-::    echo ERROR: OneAPI installation failed
-::    exit /b 1
-::)
+"oneapi-%VERSION%.exe" -s -a --silent --eula accept --action install
+if errorlevel 1 (
+    echo ERROR: OneAPI installation failed
+    exit /b 1
+)
 
 echo Successfully installed OneAPI %VERSION%
