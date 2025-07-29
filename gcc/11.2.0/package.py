@@ -1,6 +1,6 @@
 name = "gcc"
 
-version = "14.2.0"
+version = "11.2.0"
 
 authors = [
     "GNU"

@@ -1,4 +1,4 @@
-name = "openusd"
+name = "usd"
 
 version = "25.05"
 

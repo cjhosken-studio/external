@@ -16,6 +16,3 @@ else
 fi
 
 sh $TAR_FILE --silent --toolkit --defaultroot=$REZ_BUILD_INSTALL_PATH --toolkitpath=$REZ_BUILD_INSTALL_PATH
-        
-make -j$NPROC
-make install

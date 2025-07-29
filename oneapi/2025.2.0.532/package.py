@@ -16,13 +16,12 @@ def commands():
     major_minor = f"{maj}.{mnr}"
 
     env.PATH.prepend(f"{{root}}/{major_minor}/bin")
-
     env.LD_LIBRARY_PATH.append(f"{{root}}/{major_minor}/lib")
 
-    env.oneAPI_ROOT.set(f"{{root}}/{major_minor}")
-    env.oneAPI_INCLUDE_DIR.set(f"{{root}}/{major_minor}/include")
-    env.oneAPI_LIBRARY_DIR.set(f"{{root}}/{major_minor}/lib")
-
+    if building:
+        env.oneAPI_ROOT.set(f"{{root}}/{major_minor}")
+        env.oneAPI_INCLUDE_DIR.set(f"{{root}}/{major_minor}/include")
+        env.oneAPI_LIBRARY_DIR.set(f"{{root}}/{major_minor}/lib")
 
 
 build_command = "{root}/build.sh"
