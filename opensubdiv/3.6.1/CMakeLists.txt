@@ -15,19 +15,19 @@ ExternalProject_Add(
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
         -DCMAKE_BUILD_TYPE=Release
 
-        -DNO_PTEX=ON
+        -DNO_PTEX=OFF
         -DPTEX_LOCATION=$ENV{Ptex_ROOT}
 
-        -DNO_TBB=OFF
+        -DNO_TBB=ON
         -DNO_OMP=ON
 
-        -DNO_CUDA=ON # change once opensubdiv updates
+        -DNO_CUDA=ON
         -DCUDA_TOOLKIT_ROOT_DIR=$ENV{CUDA_ROOT}
 
-        -DNO_OPENCL=ON # change once opensudiv updates
+        -DNO_OPENCL=ON
         -DNO_CLEW=ON
         -DNO_OPENGL=OFF
-        -DNO_METAL=OFF
+        -DNO_METAL=ON
     
         -DNO_DOC=ON
         -DNO_EXAMPLES=ON

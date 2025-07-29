@@ -1,6 +1,6 @@
 name = "glibc"
 
-version = "2.34"
+version = "2.28"
 
 authors = [
     "GNU"

@@ -19,16 +19,22 @@ tools = [
 ]
 
 variants = [
-    ["studio_core-2026"],
+    #["studio_core-2026"],
+]
+
+requires = [
+    "cmake-3.31+"
 ]
 
 
 def commands():
     env.PATH.append("{root}/bin")
     
-    env.CMAKE_MODULE_PATH.append("{root}/lib64/cmake")
     env.LD_LIBRARY_PATH.append("{root}/lib64")
 
-    env.Ptex_ROOT.set("{root}")
-    env.Ptex_INCLUDE_DIR.set("{root}/include")
-    env.Ptex_LIBRARY_DIR.set("{root}/lib64")
+    if building:
+        env.PTEX_ROOT.set("{root}")
+        env.PTEX_INCLUDE_DIR.set("{root}/include")
+        env.PTEX_LIBRARY_DIR.set("{root}/lib64")
+        env.CMAKE_MODULE_PATH.append("{root}/lib64/cmake")
+        env.PKG_CONFIG_PATH.prepend("{root}/share/pkgconfig")
