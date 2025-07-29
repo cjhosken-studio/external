@@ -23,12 +23,12 @@ tools = [
     "gcov"
 ]
 
-variants = [
-    ["platform-linux", "arch-x86_64"],
+requires = [
+    "gmp", "mpfr", "mpc"
 ]
 
-build_requires = [
-    "cmake-3.31.8+"
+variants = [
+    ["platform-linux", "arch-x86_64"],
 ]
 
 def commands():
@@ -38,3 +38,5 @@ def commands():
     env.LD_LIBRARY_PATH.prepend("{root}/lib:{root}/lib64")
 
     env.GCC_ROOT.set("{root}")
+
+build_command = "{root}/build.sh"

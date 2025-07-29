@@ -13,6 +13,8 @@ description = \
 
 tools = []
 
+requires = ["node"]
+
 def commands():
     env.EMSDK = "{root}"
     env.EM_CONFIG = "{root}/.emscripten"

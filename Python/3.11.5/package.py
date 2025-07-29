@@ -1,6 +1,6 @@
 name = "python"
 
-version = "3.13.5"
+version = "3.11.5"
 maj, mnr = version.split('.')[0:2]
 
 authors = [

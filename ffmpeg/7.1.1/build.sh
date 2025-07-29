@@ -1,7 +1,7 @@
 VERSION=$(basename "$(dirname "$0")")
-SOURCE_URL="https://github.com/Kitware/CMake/releases/download/v$VERSION"
-TAR_FILE=cmake-$VERSION.tar.gz
-SOURCE_DIR="cmake-$VERSION"
+SOURCE_URL="https://github.com/FFmpeg/FFmpeg/archive/refs/tags"
+TAR_FILE="n$VERSION.tar.gz"
+SOURCE_DIR="FFmpeg-n$VERSION"
 
 if [ ! -f "$TAR_FILE" ]; then
     echo "Downloading $TAR_FILE..."
@@ -19,9 +19,16 @@ fi
 
 cd $SOURCE_DIR
 
-./bootstrap --prefix=$REZ_BUILD_INSTALL_PATH \
-            --parallel=$NPROC \
-            --no-system-libs
-        
-make -j$NPROC
+# Configure
+echo "Configuring ffmpeg..."
+./configure \
+    --prefix=$REZ_BUILD_INSTALL_PATH \
+    --disable-x86asm
+
+
+# Build and install
+echo "Building ffmpeg..."
+make -j$(nproc)
 make install
+
+echo -e "\n[REZ] ffmpeg $VERSION Install finished!\n"

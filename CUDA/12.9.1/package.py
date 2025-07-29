@@ -48,7 +48,7 @@ def commands():
         
         env.CUDA_ROOT.set(cuda_root)
         env.CUDA_INCLUDE_DIR.set(f"{cuda_root}/include")
-        env.CUDA_LIBRARY_DIR.set(f"{cuda_root}/lib/x64")
+        env.CUDA_LIBRARY_DIR.set(f"{cuda_root}/lib64/")
         env.CMAKE_MODULE_PATH.append(f"{cuda_root}/lib/cmake")
     else:
         os.environ["PATH"] = "{root}/bin:" + os.environ.get("PATH")
@@ -59,9 +59,5 @@ def commands():
         os.environ["CUDA_INCLUDE_DIR"] = "{root}/include"
         os.environ["CUDA_LIBRARY_DIR"] = "{root}/lib64"
     
-import platform
 
-if platform.system() == "Windows":
-    build_command = "{root}/build.bat"
-else:
-    build_command = "{root}/build.sh"
+build_command = "{root}/build.sh"

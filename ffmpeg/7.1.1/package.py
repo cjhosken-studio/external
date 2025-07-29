@@ -23,21 +23,15 @@ tools = [
 requires = []
 
 def commands():
-    import platform
+    env.PATH.append("{root}/bin")
+    env.LD_LIBRARY_PATH.append("{root}/lib")
 
-    if platform.system() == "Windows":
-        env.PATH.prepend("{root}/bin")
-    else:
-        env.PATH.append("{root}/bin")
-        env.LD_LIBRARY_PATH.append("{root}/lib")
-
+    if building:
         env.FFmpeg_ROOT.set("{root}")
         env.FFmpeg_INCLUDE_DIR.set("{root}/include")
         env.FFmpeg_LIBRARY_DIR.set("{root}/lib")
 
-import platform
+        env.PKG_CONFIG_PATH.prepend("{root}/lib/pkgconfig")
 
-if platform.system() == "Windows":
-    build_command = "{root}\\build.bat"
-else:
-    build_command = ""
+
+build_command = "{root}/build.sh"
