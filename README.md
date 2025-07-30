@@ -133,3 +133,25 @@ Build Order:
 9. studio_vfxplatform
 9. OpenUSD / OpenTimelineIO / OptiX
 10. Then whatever else you want
+
+
+
+
+
+## pip packages
+
+rez is also used to install pip python packages
+
+rez pip --python-version VERSION -i PACKAGE
+
+PySide6
+    - 6.8.1
+
+PyQt6
+    - 6.8.1
+
+numpy
+    - 1.26.4
+
+usd-core
+    - 25.5

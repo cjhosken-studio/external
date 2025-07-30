@@ -15,10 +15,6 @@ description = \
     The Python interpreter and the extensive standard library are available in source or binary form without charge for all major platforms, and can be freely distributed.
     """
 
-variants = [
-    ["platform-linux", "arch-x86_64"],
-]
-
 requires = []
 
 tools = [
@@ -40,27 +36,37 @@ def pre_commands():
     env.PYTHONHOME.unset()
 
 def commands():
+    import platform
     maj, mnr = f"{version}".split('.')[0:2]
 
     major_minor = f"{maj}.{mnr}"
-    
-    env.PATH.prepend("{root}/bin")
-    env.LD_LIBRARY_PATH.set("{root}/lib")
-        
-    alias("python", "{root}/bin/python{maj}")
-
-    if building:
-        env.PYTHON_ROOT.set("{root}")
-        env.PYTHON_INCLUDE_DIR.set("{root}/include")
-        env.PYTHON_LIBRARY_DIR.set("{root}/lib")
-        env.PYTHON_LIBRARIES.set(f"{{root}}/lib/python/libpython{maj}.so")
-        env.PYTHON_EXECUTABLE.set(f"{{root}}/bin/python{maj}")
-
-        env.PKG_CONFIG_PATH.prepend("{root}/lib/pkgconfig")
-        env.LDFLAGS.prepend("-L{root}/lib -Wl, -rpath, {root}/lib ")
-        env.CFLAGS.prepend(f"-I{{root}}/include/python{major_minor} -fPIC -Wall ")
-        env.CXXFLAGS.prepend(f"-I{{root}}/include/python{major_minor}")
-        env.CPPFLAGS.prepend(f"-I{{root}}/include/python{major_minor}")
 
 
-build_command = "{root}/build.sh"
+    if platform.system() == "Windows":
+        pass
+    else:
+        env.PATH.prepend("{root}/bin")
+        env.LD_LIBRARY_PATH.set("{root}/lib")
+            
+        alias("python", "{root}/bin/python{maj}")
+
+        if building:
+            env.PYTHON_ROOT.set("{root}")
+            env.PYTHON_INCLUDE_DIR.set("{root}/include")
+            env.PYTHON_LIBRARY_DIR.set("{root}/lib")
+            env.PYTHON_LIBRARIES.set(f"{{root}}/lib/python/libpython{maj}.so")
+            env.PYTHON_EXECUTABLE.set(f"{{root}}/bin/python{maj}")
+
+            env.PKG_CONFIG_PATH.prepend("{root}/lib/pkgconfig")
+            env.LDFLAGS.prepend("-L{root}/lib -Wl, -rpath, {root}/lib ")
+            env.CFLAGS.prepend(f"-I{{root}}/include/python{major_minor} -fPIC -Wall ")
+            env.CXXFLAGS.prepend(f"-I{{root}}/include/python{major_minor}")
+            env.CPPFLAGS.prepend(f"-I{{root}}/include/python{major_minor}")
+
+
+import platform
+
+if platform.system() == "Windows":
+    build_command = "{root}/build.bat"
+else:
+    build_command = "{root}/build.sh"
