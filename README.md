@@ -152,6 +152,3 @@ PyQt6
 
 numpy
     - 1.26.4
-
-usd-core
-    - 25.5
