@@ -15,9 +15,7 @@ description = \
     The Python interpreter and the extensive standard library are available in source or binary form without charge for all major platforms, and can be freely distributed.
     """
 
-variants = [
-    ["platform-linux", "arch-x86_64"],
-]
+variants = []
 
 requires = []
 
