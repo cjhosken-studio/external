@@ -10,31 +10,29 @@ ExternalProject_Add(
     URL https://github.com/PixarAnimationStudios/OpenUSD/archive/refs/tags/v${VERSION}.tar.gz
     PREFIX usd
     INSTALL_DIR $ENV{REZ_BUILD_INSTALL_PATH}
-    
-    # Pre-build steps
     BUILD_IN_SOURCE 1
-    CONFIGURE_COMMAND python3 -m pip install PyOpenGL PyOpenGL_accelerate Jinja2
-    
-    # Install Python dependencies
-    BUILD_COMMAND 
-        mkdir -p build &&
-        cd build &&
-        cmake 
+    CMAKE_ARGS
             -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
             -DCMAKE_BUILD_TYPE=Release
             -DBUILD_SHARED_LIBS=ON
             
             -DPXR_ENABLE_PYTHON_SUPPORT=ON
             -DPXR_USE_PYTHON3=ON
-            -DPYTHON_ROOT=$ENV{Python_ROOT}
-            -DPXR_PY_UNDEFINED_DYNAMIC_LOOKUP=ON
-            -DPYOPENGL_AVAILABLE=ON
+            -DPYTHON_ROOT=$ENV{PYTHON_ROOT}
+            -DPYTHON_INCLUDE_DIRS=$ENV{PYTHON_INCLUDE_DIR}
+            -DPYTHON_LIBRARIES=$ENV{PYTHON_LIBRARY_DIR}
+            #-DPXR_PY_UNDEFINED_DYNAMIC_LOOKUP=ON
+
+            -DTBB_ROOT_DIR=$ENV{oneAPI_ROOT}/../tbb/latest
+
+            -DOCIO_INCLUDE_DIRS=$ENV{OpenColorIO_INCLUDE_DIR}
+            -DOCIO_LIBRARIES=$ENV{OpenColorIO_LIBRARY_DIR}
 
             -DPXR_ENABLE_MATERIALX_SUPPORT=ON
             -DPXR_ENABLE_PTEX_SUPPORT=ON
 
-            -DPTEX_INCLUDE_DIR=$ENV{Ptex_INCLUDE_DIR}
-            -DPTEX_LIBRARY=$ENV{Ptex_LIBRARY_DIR}
+            -DPTEX_INCLUDE_DIR=$ENV{PTEX_INCLUDE_DIR}
+            -DPTEX_LIBRARY=$ENV{PTEX_LIBRARY_DIR}
 
             -DPXR_BUILD_OPENCOLORIO_PLUGIN=ON
             -DPXR_BUILD_OPENIMAGEIO_PLUGIN=ON
@@ -51,11 +49,6 @@ ExternalProject_Add(
             -DPXR_BUILD_DOCUMENTATION=OFF
             -DPXR_BUILD_EXAMPLES=OFF
             -DPXR_BUILD_TESTS=OFF
-            ..
-    
-    INSTALL_COMMAND 
-        cd build &&
-        make install -j$(nproc)
 )
 
 install(

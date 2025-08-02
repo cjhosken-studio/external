@@ -19,11 +19,12 @@ tools = [
 ]
 
 variants = [
-    #["studio_core-2026"],
+    ["studio_core-2025"],
+    ["studio_core-2026"],
 ]
 
 requires = [
-    "cmake-3.31+"
+
 ]
 
 

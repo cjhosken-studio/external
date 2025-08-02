@@ -15,7 +15,7 @@ ExternalProject_Add(
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
         -DCMAKE_BUILD_TYPE=Release
 
-        -DNO_PTEX=OFF
+        -DNO_PTEX=ON
         -DPTEX_LOCATION=$ENV{Ptex_ROOT}
 
         -DNO_TBB=ON

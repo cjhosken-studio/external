@@ -16,6 +16,7 @@ tools = [
 ]
 
 variants = [
+    ["studio_core-2025"],
     ["studio_core-2026"],
 ]
 

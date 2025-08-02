@@ -18,11 +18,11 @@ tools = [
 ]
 
 variants = [
-    ["studio_core-2026"],
+    ["studio_core-2025", "boost-1.85"],
+    ["studio_core-2026", "boost-1.88"],
 ]
 
 requires = [
-    "boost-1.88",
     "pybind11",
     "imath-3"
 ]

@@ -17,11 +17,11 @@ tools = [
 ]
 
 variants = [
-    ["studio_core-2026"]
+    ["studio_core-2025"]
 ]
 
 requires = [
-    "boost-1.88",
+    "boost-1.85",
 ]
 
 def commands():

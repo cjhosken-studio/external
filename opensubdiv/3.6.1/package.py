@@ -18,14 +18,15 @@ tools = [
 ]
 
 variants = [
+    ["studio_core-2025"],
     ["studio_core-2026"],
 ]
 
 requires = [
     "ptex-2.4",
-    "cuda-12.9",
-    "opencl-2025",
-    "oneapi-2025"
+    #"cuda-12.9",
+    #"opencl-2025",
+    #"oneapi-2025"
 ]
 
 def commands():

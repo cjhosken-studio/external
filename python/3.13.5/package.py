@@ -58,10 +58,6 @@ def commands():
             env.PYTHON_EXECUTABLE.set(f"{{root}}/bin/python{maj}")
 
             env.PKG_CONFIG_PATH.prepend("{root}/lib/pkgconfig")
-            env.LDFLAGS.prepend("-L{root}/lib -Wl, -rpath, {root}/lib ")
-            env.CFLAGS.prepend(f"-I{{root}}/include/python{major_minor} -fPIC -Wall ")
-            env.CXXFLAGS.prepend(f"-I{{root}}/include/python{major_minor}")
-            env.CPPFLAGS.prepend(f"-I{{root}}/include/python{major_minor}")
 
 
 import platform

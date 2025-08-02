@@ -20,7 +20,7 @@ requires = [
 def commands():
     # Set C++20 standard for all platforms
     env.CMAKE_CXX_STANDARD.set("20")
-    env.CXXFLAGS.set("-std=c++20 -fPIC -stdlib=libc++")
+    env.CXXFLAGS.set("-std=c++20 -fPIC")
     env.CMAKE_BUILD_TYPE.set("Release")
 
 build_command = ""

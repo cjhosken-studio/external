@@ -16,7 +16,7 @@ ExternalProject_Add(
         -DBUILD_SHARED_LIBS=ON
         
         -DOPENEXR_BUILD_PYTHON=ON
-        -DImath_DIR=$ENV{Imath_ROOT}
+        #-DImath_DIR=$ENV{Imath_ROOT}
 
         -DBUILD_TESTING=OFF
         -DOPENEXR_BUILD_TOOLS=ON

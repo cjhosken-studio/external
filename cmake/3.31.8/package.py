@@ -3,7 +3,7 @@ version = "3.31.8"
 maj, mnr = version.split('.')[0:2]
 
 variants = [
-    ['platform-linux', 'arch-x86_64']
+
 ]
 
 tools = [

@@ -16,7 +16,7 @@ ExternalProject_Add(
         -DBUILD_SHARED_LIBS=ON
 
         -DUSE_PYTHON=ON
-        -DUSE_QT=ON
+        -DUSE_QT=OFF
         -DUSE_OPENGL=ON
 
         -DQt6_ROOT=$ENV{Qt6_ROOT}

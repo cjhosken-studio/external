@@ -152,3 +152,9 @@ PyQt6
 
 numpy
     - 1.26.4
+
+PyOpenGL
+    - 3.1.9
+
+Jinja2
+    - 3.1.6

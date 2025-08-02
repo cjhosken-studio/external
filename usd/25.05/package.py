@@ -16,24 +16,31 @@ tools = [
 ]
 
 variants = [
-    ["studio_core-2026"]
+    ["studio_core-2025", "PySide6-6.5"],
+    ["studio_core-2026", "PySide6-6.8"]
 ]
 
 requires = [
     "opensubdiv-3.6",
-    "boost-1.88",
     "oneapi-2025",
     "materialx-1.39",
     "openimageio-3",
     "opencolorio-2.4",
     "ptex-2.4",
-    "alembic-1.8"
+    "alembic-1.8",
+    "PyOpenGL",
 ]
 
 def commands():
     env.PATH.prepend("{root}/bin")
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_MODULE_PATH.append("{root}/lib/cmake")
+    env.CMAKE_MODULE_PATH.append("{root}/cmake")
 
-    env.USD_DIR.set("{root}")
-    env.pxr_DIR.set("{root}")
+    env.PXR_PLUGINPATH_NAME.append("{root}/plugin/usd")
+
+    env.PYTHONPATH.append("{root}/lib/python")
+
+    if building:
+        env.PXR_DIR.set("{root}")
+        env.PXR_LIBRARY_DIR.set("{root}/lib")
+        env.PXR_INCLUDE_DIR.set("{root}/include")

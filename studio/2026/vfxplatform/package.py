@@ -16,10 +16,10 @@ requires = [
     "studio_core-2026", # GCC setup is done in here.
     "python-3.13",
     "qt-6.8",
-    "openexr-3.3+",
+    #"openexr-3.4", 
     "ptex-2.4",
     "opensubdiv-3.6",
-    "openvdb-12+",
+    #"openvdb-13",
     "alembic-1.8",
     "fbx-2020.2+",
     "opencolorio-2.4", # ACES 2.0.0

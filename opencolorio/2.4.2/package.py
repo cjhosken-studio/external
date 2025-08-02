@@ -30,12 +30,8 @@ tools = [
 ]
 
 variants = [
-    ["studio_core-2026"], # OpenEXR should be 3.4
-]
-
-requires = [
-    "openexr-3+",
-    
+    ["studio_core-2025", "openexr-3.3"],
+    ["studio_core-2026", "openexr-3.3"], # OpenEXR should be 3.4
 ]
 
 def commands():
@@ -43,7 +39,10 @@ def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib64")
     env.CMAKE_MODULE_PATH.append("{root}/lib64/cmake")
 
-    env.PYTHONPATH.append("{root}/lib64/python3.13/site-packages")
+    if "studio_core-2025" in resolve:
+        env.PYTHONPATH.append("{root}/lib64/python3.11/site-packages")
+    elif "studio_core-2026" in resolve:
+        env.PYTHONPATH.append("{root}/lib64/python3.13/site-packages")
 
     env.OpenColorIO_ROOT.set("{root}")
     env.OpenColorIO_INCLUDE_DIR.set("{root}/include")

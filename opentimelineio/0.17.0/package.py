@@ -15,13 +15,13 @@ tools = [
 ]
 
 variants = [
+    ["studio_core-2025"],
     ["studio_core-2026"],
 ]
 
 requires = [
-    "git",
-    "imath-3",
-    "pybind11-3",
+    "imath",
+    "pybind11",
 ]
 
 def commands():

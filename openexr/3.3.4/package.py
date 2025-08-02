@@ -26,12 +26,12 @@ tools = [
 ]
 
 variants = [
+    ["studio_core-2025"],
     ["studio_core-2026"],
 ]
 
 requires = [
-    "pybind11-3",
-    "imath-3"
+    "pybind11"
 ]
 
 def commands():

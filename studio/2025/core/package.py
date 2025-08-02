@@ -1,8 +1,5 @@
 # @studio/platform-2026/package.py
-import platform
-
 name = "studio_core"
-version = "2025.0"
 version = "2025.0"
 
 description = \
@@ -21,7 +18,7 @@ requires = [
 def commands():
     # Set C++20 standard for all platforms
     env.CMAKE_CXX_STANDARD.set("17")
-    env.CXXFLAGS.set("-std=c++17 -fPIC -stdlib=libc++")
+    env.CXXFLAGS.set("-std=c++17 -fPIC")
     env.CMAKE_BUILD_TYPE.set("Release")
 
 build_command = ""

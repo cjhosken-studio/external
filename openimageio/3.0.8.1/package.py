@@ -22,13 +22,12 @@ tools = [
 ]
 
 variants = [
-    ["studio_core-2026"],
+    ["studio_core-2025", "openexr-3.3"],
+    ["studio_core-2026", "openexr-3.3"], # should be 3.4
 ]
 
 requires = [
-    "qt-6",
     "ptex-2.4",
-    "openexr-3+",
     "pybind11-3+",
     "opencolorio-2.4"
 ]

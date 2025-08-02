@@ -8,7 +8,7 @@ authors = ['GNU']
 tools = []
 
 variants = [
-    ['platform-linux', 'arch-x86_64']
+
 ]
 
 def commands():
